@@ -20,17 +20,10 @@ class ImagesList extends React.Component {
         const self = this;
         $.ajax(settings).then(
             function(response) {
-                console.log(response);
-                //debugger;
                 const imagesList = response.data.map((img) => {
                     return {cover: img.cover}
                 })
-                debugger;
                 self.props.fetchImagesList(imagesList); //TODO should be updateImagesList
-                const imgId = response.data[0].cover;
-                document.getElementById('firstImg').src = `http://i.imgur.com/${imgId}.png`;
-                console.log( "$.get succeeded" );
-
             }, function() {
                 console.log( "$.get failed!" );
             }
@@ -38,12 +31,17 @@ class ImagesList extends React.Component {
     }
 
     createImagesList() {
-        return this.props.images.map((img, i) => {
-            //debugger;
+        if (this.props.images) {
+            return this.props.images.map((img, i) => {
+                return (
+                    <img key={i} style={{width: '150px', height: '100px'}} src={`http://i.imgur.com/${img.cover}.png`}/>
+                )
+            })
+        } else {
             return (
-                <p key={i} onClick={() => this.props.fetchImagesList()}>{img.a} / {img.b}</p>
+                <p>Getting images failed. Check Your internet connection.</p>
             )
-        })
+        }
     }
 
     render() {
