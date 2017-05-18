@@ -5,7 +5,11 @@ class App extends React.Component {
     render() {
         return (
             <div id={"mainDiv"}>
-                <ImagesList />
+                <div id={'mainContentDiv'}>
+                    <p>guziczki jakies</p>
+                    <ImagesList />
+                    <p>inne guziczki</p>
+                </div>
             </div>
         );
     }

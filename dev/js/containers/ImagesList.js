@@ -47,7 +47,7 @@ class ImagesList extends React.Component {
 
                 return (
                     <div key={i+'div'} className={'imgInGallery'}>
-                        <img key={i+'img'} style={{width: '160px', height: '160px'}} src={`http://i.imgur.com/${img.thumbnail}b.png`}/>
+                        <img key={i+'img'} className={'imgThumb'} src={`http://i.imgur.com/${img.thumbnail}s.png`}/>
                         {(i%5===4 ) && (
                             <br key={i+'br'}/>
                         )}
@@ -63,7 +63,7 @@ class ImagesList extends React.Component {
 
     render() {
         return (
-            <div>
+            <div id={'imagesList'}>
                 {this.createImagesList()}
             </div>
         )

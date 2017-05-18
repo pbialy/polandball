@@ -1,3 +1,38 @@
+body#bodyMain {
+    background: dimgrey;
+}
+
+div#mainDiv {
+}
+
+div#mainContentDiv {
+    background: black;
+    color: white;
+    border-radius: 1em;
+    padding: 1em;
+    position: absolute;
+    /*top: 50%;*/
+    margin-bottom: 10px;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0)
+
+}
+
+div#imagesList {
+}
+
 div.imgInGallery {
     display: inline;
+}
+
+img.imgThumb {
+    /*
+    width: 160px;
+    height: 160px;
+    */
+    width: 90px;
+    height: 90px;
+    margin: 10px 5px 0px 5px;
+    border: solid darkslategray 2px;
 }
