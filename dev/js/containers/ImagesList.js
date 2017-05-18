@@ -7,7 +7,7 @@ class ImagesList extends React.Component {
 
     componentDidMount() {
         console.log('imagesList - component-did-mount');
-        var settings = {
+        const settings = {
             async: true,
             crossDomain: true,
             url: "https://api.imgur.com/3/gallery/search/time/all/1?q=polandball",
@@ -15,14 +15,22 @@ class ImagesList extends React.Component {
             headers: {
                 "authorization": "Client-ID c15b126ab623153"
             }
-        }
+        };
 
         const self = this;
         $.ajax(settings).then(
             function(response) {
                 const imagesList = response.data.map((img) => {
-                    return {cover: img.cover}
-                })
+                    if (img.cover) {
+                        return {
+                            thumbnail: img.cover
+                        }
+                    } else {
+                        return {
+                            thumbnail: img.id
+                        }
+                    }
+                });
                 self.props.fetchImagesList(imagesList); //TODO should be updateImagesList
             }, function() {
                 console.log( "$.get failed!" );
@@ -32,14 +40,23 @@ class ImagesList extends React.Component {
 
     createImagesList() {
         if (this.props.images) {
+            // 'b' in the end of url is for thumbnail
+            // see https://api.imgur.com/models/image#thumbs for more
             return this.props.images.map((img, i) => {
+                //console.log(img);
+
                 return (
-                    <img key={i} style={{width: '150px', height: '100px'}} src={`http://i.imgur.com/${img.cover}.png`}/>
+                    <div key={i+'div'} className={'imgInGallery'}>
+                        <img key={i+'img'} style={{width: '160px', height: '160px'}} src={`http://i.imgur.com/${img.thumbnail}b.png`}/>
+                        {(i%5===4 ) && (
+                            <br key={i+'br'}/>
+                        )}
+                    </div>
                 )
             })
         } else {
             return (
-                <p>Getting images failed. Check Your internet connection.</p>
+                <p>Getting images in progress. Check Your internet connection if this message doesn't disappear.</p>
             )
         }
     }

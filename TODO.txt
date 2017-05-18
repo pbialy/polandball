@@ -1,0 +1,4 @@
+- fixnames of things (reducers etc)
+- smaller images scaling properly
+- split containers & components
+- containers & components - camelCase
