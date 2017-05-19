@@ -6,7 +6,6 @@ import {updateImagesList} from '~/js/actions/index.js';
 class ImagesList extends React.Component {
 
     createImagesList() {
-        //debugger;
         if (this.props.images) {
             // char in the end of url (before '.png' is for thumbnail
             // see https://api.imgur.com/models/image#thumbs for more
@@ -30,7 +29,6 @@ class ImagesList extends React.Component {
     }
 
     render() {
-        //this.fetchImagesList();
         return (
             <div id={'imagesList'}>
                 {this.createImagesList()}

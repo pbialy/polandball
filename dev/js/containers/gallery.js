@@ -6,8 +6,15 @@ import ImagesList from '~/js/containers/imagesList.js';
 
 class Gallery extends React.Component {
 
+    componentDidMount() {
+        this.fetchImagesList();
+    }
+
+    componentDidUpdate() {
+        this.fetchImagesList();
+    }
+
     fetchImagesList() {
-        console.log('-------fetchImagesList---------');
         const pageNr = this.props.pageNumber;
         const settings = {
             async: true,
@@ -35,29 +42,13 @@ class Gallery extends React.Component {
                 });
                 self.props.updateImagesList(imagesList);
             }, function() {
-                console.log( "$.get failed!" );
+                console.log( "getting imagesList failed!" );
             }
         );
     }
 
     changePageNumber(val) {
-        $.when(
-            // TODO loader on
-            this.fetchImagesList()
-        ).then(
-            // TODO loader off
-            this.props.setPageNumber(this.props.pageNumber + val)
-        );
-
-        /*
-        var f1 = (n) => {
-            var s =0;
-            for(var i = 0; i<n; i++) {s+=1;}
-            console.log('f1 done');
-        }
-        console.log('start')
-        $.when(f1(1000000000)).then(console.log('then works'));
-        */
+        this.props.setPageNumber(this.props.pageNumber + val);
     }
 
     render () {
