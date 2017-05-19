@@ -1,9 +1,10 @@
 export default (state=null, action) => {
     switch(action.type) {
-        case 'FETCH_INITIAL_IMAGES_LIST':
+        case 'GET_INITIAL_IMAGES_LIST':
+            console.log('-- GET_INITIAL_IMAGES_LIST --', action);
             return action.payload;
             break;
         default:
-            return null
+            return state;
     }
 }

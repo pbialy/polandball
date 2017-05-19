@@ -1,19 +1,20 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {fetchImagesList} from '~/js/actions/index.js';
+import {updateImagesList} from '~/js/actions/index.js';
 
 class ImagesList extends React.Component {
 
     componentDidMount() {
-        console.log('imagesList - component-did-mount');
+        console.log('-------componentDidMount---------')
+        const pageNr = this.props.pageNumber;
         const settings = {
             async: true,
             crossDomain: true,
-            url: "https://api.imgur.com/3/gallery/search/time/all/1?q=polandball",
-            method: "GET",
+            url: `https://api.imgur.com/3/gallery/search/time/all/${pageNr}?q=polandball`,
+            method: 'GET',
             headers: {
-                "authorization": "Client-ID c15b126ab623153"
+                'authorization': 'Client-ID c15b126ab623153'
             }
         };
 
@@ -31,7 +32,7 @@ class ImagesList extends React.Component {
                         }
                     }
                 });
-                self.props.fetchImagesList(imagesList); //TODO should be updateImagesList
+                self.props.updateImagesList(imagesList);
             }, function() {
                 console.log( "$.get failed!" );
             }
@@ -39,8 +40,9 @@ class ImagesList extends React.Component {
     }
 
     createImagesList() {
+        //debugger;
         if (this.props.images) {
-            // 'b' in the end of url is for thumbnail
+            // char in the end of url (before '.png' is for thumbnail
             // see https://api.imgur.com/models/image#thumbs for more
             return this.props.images.map((img, i) => {
                 //console.log(img);
@@ -72,12 +74,15 @@ class ImagesList extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        images: state.images
+        images: state.images,
+        pageNumber: state.pageNumber
     }
 }
 
 function matchDispatchToProps(dispatch) {
-    return bindActionCreators({fetchImagesList: fetchImagesList}, dispatch);
+    return bindActionCreators({
+        updateImagesList: updateImagesList
+    }, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(ImagesList);

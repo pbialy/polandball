@@ -1,3 +1,5 @@
+/* ---------- MAIN -------- */
+
 body#bodyMain {
     background: dimgrey;
 }
@@ -19,6 +21,8 @@ div#mainContentDiv {
 
 }
 
+/* --------- IMAGES LIST ------ */
+
 div#imagesList {
 }
 
@@ -35,4 +39,12 @@ img.imgThumb {
     height: 90px;
     margin: 10px 5px 0px 5px;
     border: solid darkslategray 2px;
+}
+
+div#pageNumber {
+    width: 30px;
+    background-color: white;
+    color: black;
+    display: inline-block;
+    text-align: center;
 }

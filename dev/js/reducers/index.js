@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux';
-import ImagesReducer from '~/js/reducers/reducer-images.js'
+import ImagesListReducer from '~/js/reducers/imagesList.js';
+import PageNumberReducer from '~/js/reducers/pageNumber.js';
 
 const allReducers = combineReducers({
-    images: ImagesReducer
+    images: ImagesListReducer,
+    pageNumber: PageNumberReducer
 });
 
 export default allReducers
