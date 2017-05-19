@@ -1,6 +1,6 @@
 const updateImagesList = (imagesList) => {
     return {
-        type: "GET_INITIAL_IMAGES_LIST",
+        type: "GET_INITIAL_IMAGES_LIST", //TODO without INITIAL
         payload: imagesList
     }
 };

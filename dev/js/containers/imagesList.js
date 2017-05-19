@@ -5,40 +5,6 @@ import {updateImagesList} from '~/js/actions/index.js';
 
 class ImagesList extends React.Component {
 
-    componentDidMount() {
-        console.log('-------componentDidMount---------')
-        const pageNr = this.props.pageNumber;
-        const settings = {
-            async: true,
-            crossDomain: true,
-            url: `https://api.imgur.com/3/gallery/search/time/all/${pageNr}?q=polandball`,
-            method: 'GET',
-            headers: {
-                'authorization': 'Client-ID c15b126ab623153'
-            }
-        };
-
-        const self = this;
-        $.ajax(settings).then(
-            function(response) {
-                const imagesList = response.data.map((img) => {
-                    if (img.cover) {
-                        return {
-                            thumbnail: img.cover
-                        }
-                    } else {
-                        return {
-                            thumbnail: img.id
-                        }
-                    }
-                });
-                self.props.updateImagesList(imagesList);
-            }, function() {
-                console.log( "$.get failed!" );
-            }
-        );
-    }
-
     createImagesList() {
         //debugger;
         if (this.props.images) {
@@ -64,6 +30,7 @@ class ImagesList extends React.Component {
     }
 
     render() {
+        //this.fetchImagesList();
         return (
             <div id={'imagesList'}>
                 {this.createImagesList()}
