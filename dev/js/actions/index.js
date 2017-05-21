@@ -1,6 +1,6 @@
 const updateImagesList = (imagesList) => {
     return {
-        type: "GET_INITIAL_IMAGES_LIST", //TODO without INITIAL
+        type: "GET_IMAGES_LIST",
         payload: imagesList
     }
 };
@@ -12,7 +12,24 @@ const setPageNumber = (n) => {
     }
 };
 
+const runAdditionalQuery = (query) => {
+    return {
+        type: "RUN_ADDITIONAL_QUERY",
+        payload: query
+    }
+};
+
+const changeTempAdditionalQuery = (query) => {
+    // changes the temporary additional query string (the one displayed in input)
+    return {
+        type: "CHANGE_TEMP_ADDITIONAL_QUERY",
+        payload: query
+    }
+};
+
 export {
     updateImagesList,
-    setPageNumber
+    setPageNumber,
+    runAdditionalQuery,
+    changeTempAdditionalQuery
 }
