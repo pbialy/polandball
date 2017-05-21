@@ -27,9 +27,16 @@ const changeTempAdditionalQuery = (query) => {
     }
 };
 
+const resetStore = () => {
+    return {
+        type: "RESET_STORE"
+    }
+};
+
 export {
     updateImagesList,
     setPageNumber,
     runAdditionalQuery,
-    changeTempAdditionalQuery
+    changeTempAdditionalQuery,
+    resetStore
 }

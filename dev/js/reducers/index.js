@@ -11,4 +11,12 @@ const allReducers = combineReducers({
     tempAdditionalQuery: TempAdditionalQueryReducer
 });
 
-export default allReducers
+const rootReducer = (state, action) => {
+    if (action.type === 'RESET_STORE') {
+        state = undefined
+    }
+
+    return allReducers(state, action)
+};
+
+export default rootReducer

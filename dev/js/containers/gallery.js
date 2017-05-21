@@ -1,8 +1,9 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {setPageNumber, updateImagesList, changeTempAdditionalQuery, runAdditionalQuery} from '~/js/actions/index.js';
-import ImagesList from '~/js/containers/imagesList.js';
+import {updateImagesList} from '~/js/actions/index.js';
+import ImagesList from '~/js/containers/gallery/imagesList.js';
+import GalleryHead from '~/js/containers/gallery/galleryHead.js';
 
 class Gallery extends React.Component {
 
@@ -11,8 +12,6 @@ class Gallery extends React.Component {
     }
 
     componentDidUpdate() {
-        //TODO do not fire this if tempAddQ is updated
-        // hint - shouldComponentUpdate and move input/button into other comp OR update in imagesList
         this.fetchImagesList();
     }
 
@@ -24,7 +23,6 @@ class Gallery extends React.Component {
         const settings = Object.assign({}, {
             async: true,
             crossDomain: true,
-
             //url: `https://api.imgur.com/3/gallery/search/time/all/${pageNr}?q=polandball`,
             //url: `https://api.imgur.com/3/gallery/search/time/all/${pageNr}?q=title: cats AND dogs ext: gif`,
             //url: `https://api.imgur.com/3/gallery/search/score?q=polandball+isis`,
@@ -61,38 +59,10 @@ class Gallery extends React.Component {
         );
     }
 
-    changePageNumber(val) {
-        this.props.setPageNumber(this.props.pageNumber + val);
-    }
-
-    changeTempAdditionalQuery(e) {
-        console.log('changeTempAdditionalQuery');
-        this.props.changeTempAdditionalQuery(e.target.value);
-        //debugger;
-        // tempAddQ = e.target.value
-    }
-
-    runAdditionalQuery() {
-        console.log('runAdditionalQuery')
-        this.props.runAdditionalQuery(this.props.tempAdditionalQuery);
-    }
-
-
-
     render () {
         return (
             <div id={'gallery'}>
-                <p> prev | pageNr | next | searchStr | doSearch</p>
-            {(this.props.pageNumber >= 2) && (
-                <button onClick={() => {this.changePageNumber(-1)}}>{'<'}</button>
-            )}{/* TODO else - some space for this button */}
-                <div id={'pageNumber'}>{this.props.pageNumber}</div>
-                {/* TODO if pageNr <= totalPages */}
-                <button onClick={() => {this.changePageNumber(1)}}>{'>'}</button>
-                <input id={'additionalQueryInput'} value={this.props.tempAdditionalQuery} onChange={
-                    (e) => {this.changeTempAdditionalQuery(e)}
-                }/> {/* TODO if enter hit then click button below */}
-                <button id={'additionalQueryButton'} onClick={() => {this.runAdditionalQuery()}}>SEARCH</button>
+                <GalleryHead />
                 <ImagesList />
                 <p>go up</p>
             </div>
@@ -103,17 +73,13 @@ class Gallery extends React.Component {
 function mapStateToProps(state) {
     return {
         pageNumber: state.pageNumber,
-        tempAdditionalQuery: state.tempAdditionalQuery,
         additionalQuery: state.additionalQuery
     }
 }
 
 function matchDispatchToProps(dispatch) {
     return bindActionCreators({
-        setPageNumber: setPageNumber,
-        updateImagesList: updateImagesList,
-        changeTempAdditionalQuery: changeTempAdditionalQuery,
-        runAdditionalQuery: runAdditionalQuery
+        updateImagesList: updateImagesList
     }, dispatch);
 }
 
