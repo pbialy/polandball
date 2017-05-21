@@ -1,10 +1,11 @@
 import {combineReducers} from 'redux';
-import ImagesListReducer from '~/js/reducers/imagesList.js';
-import PageNumberReducer from '~/js/reducers/pageNumber.js';
-import AdditionalQueryReducer from '~/js/reducers/additionalQuery.js';
-import TempAdditionalQueryReducer from '~/js/reducers/tempAdditionalQuery.js';
-import DisplayModeReducer from '~/js/reducers/displayMode.js';
-import SingleImageReducer from '~/js/reducers/singleImage.js';
+import ImagesListReducer from '~/js/reducers/gallery/imagesList.js';
+import PageNumberReducer from '~/js/reducers/gallery/pageNumber.js';
+import AdditionalQueryReducer from '~/js/reducers/gallery/additionalQuery.js';
+import TempAdditionalQueryReducer from '~/js/reducers/gallery/tempAdditionalQuery.js';
+import DisplayModeReducer from '~/js/reducers/commons/displayMode.js';
+import SingleImageReducer from '~/js/reducers/singleImg/singleImage.js';
+import CommentsReducer from '~/js/reducers/singleImg/comments.js';
 
 const allReducers = combineReducers({
     imagesList: ImagesListReducer,
@@ -12,7 +13,8 @@ const allReducers = combineReducers({
     additionalQuery: AdditionalQueryReducer,
     tempAdditionalQuery: TempAdditionalQueryReducer,
     displayMode: DisplayModeReducer,
-    singleImage: SingleImageReducer
+    singleImage: SingleImageReducer,
+    comments: CommentsReducer
 });
 
 const rootReducer = (state, action) => {

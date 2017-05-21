@@ -1,18 +1,8 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import HomeButton from '~/js/containers/commons/homeButton.js';
-import Comments from '~/js/containers/singleImg/comments.js';
 
-class SingleImg extends React.Component {
-
-    prepareImg() {
-        const img = this.props.singleImage;
-        //const thumb = img.width > 1024 ? 'h' : ''; // if img is too big then show 1024x1024 version
-        const thumb = img.width > 640 ? 'l' : ''; // if img is too big then show 640x640 version
-        return `http://imgur.com/${img.id}${thumb}.png`
-    }
-
+class Comments extends React.Component {
     displayComment(comm, id, depth) {
         const divClass = depth === 1 ? 'generalCommentDiv' : 'commentDiv';
         const commDate = (new Date(comm.datetime * 1000)).toDateString();
@@ -32,17 +22,11 @@ class SingleImg extends React.Component {
     }
 
     render() {
-        const img = this.props.singleImage;
-
         return (
-            <div id={'singleImg'}>
-                <HomeButton />
-                <p>Title: {img.title || '-----'}</p>
-                <p>Description: {img.description || '-----'}</p>
-                <p>Views: {img.views || '-----'}</p>
-                <p>Points: {img.points || '-----'}</p>
-                <img src={this.prepareImg()} />
-                <Comments />
+            <div id={'commentsDiv'}>
+            {this.props.comments.map((comm, id) => (
+                this.displayComment(comm, id, 1)
+            ))}
             </div>
         )
     }
@@ -50,7 +34,7 @@ class SingleImg extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        singleImage: state.singleImage
+        comments: state.comments
     }
 }
 
@@ -61,4 +45,4 @@ function matchDispatchToProps(dispatch) {
     }, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(SingleImg);
+export default connect(mapStateToProps, matchDispatchToProps)(Comments);

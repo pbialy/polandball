@@ -33,14 +33,14 @@ class Gallery extends React.Component {
             }
         }, {
            url: addQuery === '' ?
-               `https://api.imgur.com/3/gallery/search/time/all/${pageNr}?q=polandball` :
+               `https://api.imgur.com/3/gallery/search/top/${pageNr}?q=polandball` :
                `https://api.imgur.com/3/gallery/search/score?q=polandball+${addQuery}`
         });
 
         const self = this;
         $.ajax(settings).then(
             function(response) {
-                //var dd=response.data; debugger;
+                //const dd=response.data; debugger;
                 const imagesList = response.data.map((img) => {
                     if (img.cover) {
                         return {
@@ -64,7 +64,6 @@ class Gallery extends React.Component {
             <div id={'gallery'}>
                 <GalleryHead />
                 <ImagesList />
-                <p>go up</p>
             </div>
         )
     }

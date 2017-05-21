@@ -2,6 +2,7 @@ import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {setPageNumber} from '~/js/actions/index.js';
+import PagingButtonPlaceholder from '~/js/containers/gallery/pagingButtonPlaceholder.js';
 
 class GalleryPagePaging extends React.Component {
 
@@ -12,12 +13,17 @@ class GalleryPagePaging extends React.Component {
     render() {
         return (
             <div id={'galleryPagePaging'}>
-            {(this.props.pageNumber >= 2) && (
-                <button onClick={() => {this.changePageNumber(-1)}}>{'<'}</button>
-            )}{/* TODO else - some space for this button */}
-            <div id={'pageNumber'}>{this.props.pageNumber}</div>
-            {/* TODO if pageNr <= totalPages */}
-            <button onClick={() => {this.changePageNumber(1)}}>{'>'}</button>
+            {(this.props.pageNumber >= 2) ? (
+                <button id={'pageBack'} className={'mainButton'} onClick={() => {this.changePageNumber(-1)}}>{'<'}</button>
+            ) : (
+                <PagingButtonPlaceholder />
+            )}
+                <div id={'pageNumber'}>{this.props.pageNumber}</div>
+            {(this.props.imagesList && this.props.imagesList.length !== 0) ? (
+                <button id={'pageBack'} className={'mainButton'} onClick={() => {this.changePageNumber(1)}}>{'>'}</button>
+            ) : (
+                <PagingButtonPlaceholder />
+            )}
             </div>
         )
     }
@@ -25,7 +31,8 @@ class GalleryPagePaging extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        pageNumber: state.pageNumber,
+        imagesList: state.imagesList,
+        pageNumber: state.pageNumber
     }
 }
 

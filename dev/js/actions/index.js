@@ -38,7 +38,14 @@ const showSingleImg = (image) => {
         type: "SHOW_SINGLE_IMAGE",
         payload: image
     }
-}
+};
+
+const setComments = (comments) => {
+    return {
+        type: "SET_COMMENTS",
+        payload: comments
+    }
+};
 
 export {
     updateImagesList,
@@ -46,5 +53,6 @@ export {
     runAdditionalQuery,
     changeTempAdditionalQuery,
     resetStore,
-    showSingleImg
+    showSingleImg,
+    setComments
 }

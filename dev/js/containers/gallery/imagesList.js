@@ -1,38 +1,47 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {showSingleImg} from '~/js/actions/index.js';
+import {showSingleImg, setComments} from '~/js/actions/index.js';
 
 class ImagesList extends React.Component {
 
     imageClicked(e) {
-        //debugger;
-        //e.target.id
-        var settings = {
+        const settings = {
             "async": true,
             "crossDomain": true,
-            "url": `https://api.imgur.com/3/image/${e.target.id}`,
+            "url": `https://api.imgur.com/3/gallery/image/${e.target.id}`,
             "method": "GET",
             "headers": {
                 "authorization": "Client-ID c15b126ab623153"
             }
-        }
+        };
+        const settingsForComments = {
+            "async": true,
+            "crossDomain": true,
+            "url": `https://api.imgur.com/3/gallery/${e.target.id}/comments/best`,
+            "method": "GET",
+            "headers": {
+                "authorization": "Client-ID c15b126ab623153"
+            }
+        };
 
         const self = this;
-        $.ajax(settings).done(function (response) {
+        $.ajax(settingsForComments).done(function (response) {
             //var dd=response.data; debugger;
-            const { id, title, description, views, width } = response.data; //datetime TODO
-            self.props.showSingleImg({id, title, description, views, width})
+            self.props.setComments(response.data);
+            $.ajax(settings).done(function (response) {
+                //var dd=response.data; debugger;
+                const { id, title, description, views, width, points } = response.data;
+                self.props.showSingleImg({id, title, description, views, width, points})
+            });
         });
     }
 
     createImagesList() {
-        if (this.props.imagesList) {
+        if (this.props.imagesList && this.props.imagesList.length !== 0) {
             // char in the end of url (before '.png' is for thumbnail
             // see https://api.imgur.com/models/image#thumbs for more
             return this.props.imagesList.map((img, i) => {
-                //console.log(img);
-
                 return (
                     <div key={i+'div'} className={'imgInGallery'}>
                         <img id={img.thumbnail} key={i+'img'} className={'imgThumb'} onClick={
@@ -44,9 +53,14 @@ class ImagesList extends React.Component {
                     </div>
                 )
             })
+        } else if (this.props.imagesList && this.props.imagesList.length === 0) {
+            return (
+                <p>No images to show on this page</p>
+            )
         } else {
             return (
-                <p>Getting images in progress. Check Your internet connection if this message doesn't disappear.</p>
+                <p>Getting images in progress.<br />
+                Check Your internet connection if this message doesn't disappear.</p>
             )
         }
     }
@@ -69,7 +83,8 @@ function mapStateToProps(state) {
 
 function matchDispatchToProps(dispatch) {
     return bindActionCreators({
-        showSingleImg: showSingleImg
+        showSingleImg: showSingleImg,
+        setComments: setComments
     }, dispatch);
 }
 

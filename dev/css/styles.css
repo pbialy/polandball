@@ -7,6 +7,19 @@ body#bodyMain {
 div#mainDiv {
 }
 
+div#pageHeader {
+    text-align: center;
+}
+
+span#titlePart1,
+span#titlePart2 {
+    font-size: 30px;
+}
+
+span#titlePart2 {
+    color: red;
+}
+
 div#mainContentDiv {
     background: black;
     color: white;
@@ -21,7 +34,14 @@ div#mainContentDiv {
     min-width: 520px;
 }
 
-/* --------- IMAGES LIST ------ */
+div#homeButtonDiv {
+    text-align: center;
+}
+
+button.mainButton {
+    border-radius: 2px;
+}
+/* --------- GALLERY ------ */
 
 div#imagesList {
 }
@@ -30,6 +50,9 @@ div.imgInGallery {
     display: inline;
 }
 
+div#galleryHead {
+    text-align: center;
+}
 img.imgThumb {
     /*
     width: 160px;
@@ -49,4 +72,42 @@ div#pageNumber {
     display: inline-block;
     text-align: center;
     border-radius: 1em;
+    margin: 0px 3px;
+}
+
+div#galleryPagePaging {
+    margin: 5px 0px 5px 0px;
+}
+
+div.pagingButtonPlaceholder {
+    width: 24px;
+    display: inline-block;
+}
+
+/* --------- SINGLE IMG ----- */
+
+div.generalCommentDiv {
+    margin: 20px 0px 10px 0px;
+    background: #161616;
+    border: solid darkslategray 1px;
+}
+
+div.commentDiv {
+    margin: 0px 0px 10px 30px;
+    background: #161616;
+    border-top: solid darkslategray 1px;
+
+}
+
+span.ptsSpan {
+    color: #7a7a7a;
+}
+
+span.authorSpan {
+    font-weight: bold;
+    color: #565656;
+}
+
+span.dateSpan {
+    color: #9b9b9b;
 }

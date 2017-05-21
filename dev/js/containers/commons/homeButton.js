@@ -5,12 +5,16 @@ import {resetStore} from '~/js/actions/index.js';
 
 
 class HomeButton extends React.Component {
+    triggerButton() {
+        if (this.props.additionalQuery || this.props.pageNumber !== 1 || this.props.displayMode !== 'gallery') {
+            this.props.resetStore()
+        }
+    }
+
     render() {
         return (
-            <div id={'homeButton'}>
-            {(this.props.additionalQuery || this.props.pageNumber !== 1 || this.props.displayMode !== 'gallery') && (
-                <button onClick={() => {this.props.resetStore()}}>{'HOME'}</button>
-            )}
+            <div id={'homeButtonDiv'}>
+                <button className={'mainButton'} onClick={() => {this.triggerButton()}}>{'HOME'}</button>
             </div>
         )
     }
