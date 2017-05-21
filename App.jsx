@@ -1,4 +1,6 @@
 import React from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import Gallery from '~/js/containers/gallery.js';
 import SingleImg from '~/js/containers/singleImg.js';
 
@@ -7,11 +9,23 @@ class App extends React.Component {
         return (
             <div id={"mainDiv"}>
                 <div id={'mainContentDiv'}>
-                    <Gallery /> {/* TODO if detail then ImageDetails */}
+                    {this.props.displayMode === 'gallery' && (<Gallery />)}
+                    {this.props.displayMode === 'single' && (<SingleImg />)}
                 </div>
             </div>
         );
     }
 }
+function mapStateToProps(state) {
+    return {
+        displayMode: state.displayMode
+    }
+}
 
-export default App;
+function matchDispatchToProps(dispatch) { // TODO delete?
+    return bindActionCreators({
+        //updateImagesList: updateImagesList
+    }, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(App);

@@ -3,12 +3,16 @@ import ImagesListReducer from '~/js/reducers/imagesList.js';
 import PageNumberReducer from '~/js/reducers/pageNumber.js';
 import AdditionalQueryReducer from '~/js/reducers/additionalQuery.js';
 import TempAdditionalQueryReducer from '~/js/reducers/tempAdditionalQuery.js';
+import DisplayModeReducer from '~/js/reducers/displayMode.js';
+import SingleImageReducer from '~/js/reducers/singleImage.js';
 
 const allReducers = combineReducers({
-    images: ImagesListReducer,
+    imagesList: ImagesListReducer,
     pageNumber: PageNumberReducer,
     additionalQuery: AdditionalQueryReducer,
-    tempAdditionalQuery: TempAdditionalQueryReducer
+    tempAdditionalQuery: TempAdditionalQueryReducer,
+    displayMode: DisplayModeReducer,
+    singleImage: SingleImageReducer
 });
 
 const rootReducer = (state, action) => {

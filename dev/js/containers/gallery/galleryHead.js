@@ -2,7 +2,8 @@ import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import GalleryPagePaging from '~/js/containers/gallery/galleryPagePaging.js';
-import {changeTempAdditionalQuery, runAdditionalQuery, resetStore} from '~/js/actions/index.js';
+import HomeButton from '~/js/containers/commons/homeButton.js';
+import {changeTempAdditionalQuery, runAdditionalQuery} from '~/js/actions/index.js';
 
 class GalleryHead extends React.Component {
 
@@ -30,7 +31,7 @@ class GalleryHead extends React.Component {
         return (
             <div id={'galleryHead'}>
                 {/* TODO if not default */}
-                {(this.props.additionalQuery || this.props.pageNumber !== 1) && <button onClick={() => {this.resetStore()}}>{'HOME'}</button>}
+                <HomeButton />
                 {!this.props.additionalQuery && <GalleryPagePaging />}
                 <input id={'additionalQueryInput'} value={this.props.tempAdditionalQuery} onChange={
                     (e) => {this.changeTempAdditionalQuery(e)}
@@ -53,7 +54,6 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({
         changeTempAdditionalQuery: changeTempAdditionalQuery,
         runAdditionalQuery: runAdditionalQuery,
-        resetStore: resetStore
     }, dispatch);
 }
 

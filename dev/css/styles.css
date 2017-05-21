@@ -17,8 +17,8 @@ div#mainContentDiv {
     margin-bottom: 10px;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, 0)
-
+    transform: translate(-50%, 0);
+    min-width: 520px;
 }
 
 /* --------- IMAGES LIST ------ */
@@ -35,8 +35,11 @@ img.imgThumb {
     width: 160px;
     height: 160px;
     */
+    width: 90px;
+    height: 90px;
     margin: 10px 5px 0px 5px;
     border: solid darkslategray 2px;
+    cursor: pointer;
 }
 
 div#pageNumber {
@@ -45,4 +48,5 @@ div#pageNumber {
     color: black;
     display: inline-block;
     text-align: center;
+    border-radius: 1em;
 }

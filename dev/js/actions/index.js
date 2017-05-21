@@ -33,10 +33,18 @@ const resetStore = () => {
     }
 };
 
+const showSingleImg = (image) => {
+    return {
+        type: "SHOW_SINGLE_IMAGE",
+        payload: image
+    }
+}
+
 export {
     updateImagesList,
     setPageNumber,
     runAdditionalQuery,
     changeTempAdditionalQuery,
-    resetStore
+    resetStore,
+    showSingleImg
 }
