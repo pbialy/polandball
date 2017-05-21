@@ -34,10 +34,12 @@ class GalleryHead extends React.Component {
             {!this.props.additionalQuery && (
                 <GalleryPagePaging />
             )}
-                <input id={'additionalQueryInput'} value={this.props.tempAdditionalQuery} onChange={
-                    (e) => {this.changeTempAdditionalQuery(e)}
-                }/> {/* TODO if enter hit then click button below */}
-                <button id={'additionalQueryButton'} className={'mainButton'} onClick={() => {this.runAdditionalQuery()}}>SEARCH</button>
+                <div id={'gallerySearchDiv'}>
+                    <input id={'additionalQueryInput'} value={this.props.tempAdditionalQuery} onChange={
+                        (e) => {this.changeTempAdditionalQuery(e)}
+                    }/> {/* TODO if enter hit then click button below */}
+                    <button id={'additionalQueryButton'} className={'mainButton'} onClick={() => {this.runAdditionalQuery()}}>SEARCH</button>
+                </div>
             </div>
         )
     }
