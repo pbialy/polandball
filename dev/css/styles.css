@@ -4,9 +4,6 @@ body#bodyMain {
     background: dimgrey;
 }
 
-div#mainDiv {
-}
-
 div#pageHeader {
     text-align: center;
 }
@@ -26,7 +23,6 @@ div#mainContentDiv {
     border-radius: 1em;
     padding: 1em;
     position: absolute;
-    /*top: 50%;*/
     margin-bottom: 10px;
     left: 50%;
     margin-right: -50%;
@@ -56,9 +52,6 @@ button.buttonClicked {
 }
 
 /* --------- GALLERY ------ */
-
-div#imagesList {
-}
 
 div.imgInGallery {
     display: inline;

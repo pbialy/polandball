@@ -36,7 +36,6 @@ class Gallery extends React.Component {
         const self = this;
         $.ajax(settings).then(
             function(response) {
-                //const dd=response.data; debugger;
                 const imagesList = response.data.map((img) => {
                     if (img.cover) {
                         return {
