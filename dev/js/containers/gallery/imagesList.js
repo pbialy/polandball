@@ -30,9 +30,9 @@ class ImagesList extends React.Component {
             //var dd=response.data; debugger;
             self.props.setComments(response.data);
             $.ajax(settings).done(function (response) {
-                //var dd=response.data; debugger;
-                const { id, title, description, views, width, points } = response.data;
-                self.props.showSingleImg({id, title, description, views, width, points})
+                var dd=response.data; debugger;
+                const { id, title, description, views, width, points, account_url } = response.data;
+                self.props.showSingleImg({id, title, description, views, width, points, account_url})
             });
         });
     }

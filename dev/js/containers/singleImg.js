@@ -38,10 +38,11 @@ class SingleImg extends React.Component {
         return (
             <div id={'singleImg'}>
                 <HomeButton />
-                <p>Title: {img.title || '-----'}</p>
-                <p>Description: {img.description || '-----'}</p>
-                <p>Views: {img.views || '-----'}</p>
-                <p>Points: {img.points || '-----'}</p>
+                {img.title && (<p>Title: {img.title}</p>)}
+                {img.account_url && (<p>Author: {img.account_url}</p>)}
+                {img.description && (<p>Description: {img.description}</p>)}
+                {img.views && (<p>Views: {img.views}</p>)}
+                {img.points && (<p>Points: {img.points}</p>)}
                 <img src={this.prepareImg()} />
                 <Comments />
             </div>
