@@ -6,6 +6,7 @@ import TempAdditionalQueryReducer from '~/js/reducers/gallery/tempAdditionalQuer
 import DisplayModeReducer from '~/js/reducers/commons/displayMode.js';
 import SingleImageReducer from '~/js/reducers/singleImg/singleImage.js';
 import CommentsReducer from '~/js/reducers/singleImg/comments.js';
+import SizeReducer from '~/js/reducers/commons/size.js';
 
 const allReducers = combineReducers({
     imagesList: ImagesListReducer,
@@ -14,7 +15,8 @@ const allReducers = combineReducers({
     tempAdditionalQuery: TempAdditionalQueryReducer,
     displayMode: DisplayModeReducer,
     singleImage: SingleImageReducer,
-    comments: CommentsReducer
+    comments: CommentsReducer,
+    size: SizeReducer
 });
 
 const rootReducer = (state, action) => {

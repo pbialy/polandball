@@ -41,12 +41,13 @@ class ImagesList extends React.Component {
         if (this.props.imagesList && this.props.imagesList.length !== 0) {
             // char in the end of url (before '.png' is for thumbnail
             // see https://api.imgur.com/models/image#thumbs for more
+            const size = this.props.size === 'small' ? 's' : 'b';
             return this.props.imagesList.map((img, i) => {
                 return (
                     <div key={i+'div'} className={'imgInGallery'}>
-                        <img id={img.thumbnail} key={i+'img'} className={'imgThumb'} onClick={
+                        <img id={img.thumbnail} key={i+'img'} className={`imgThumb imgThumb_${size}`} onClick={
                             (e) => this.imageClicked(e)
-                        } src={`http://i.imgur.com/${img.thumbnail}s.png`}/>
+                        } src={`http://i.imgur.com/${img.thumbnail}${size}.png`}/>
                         {(i%5===4 ) && (
                             <br key={i+'br'}/>
                         )}
@@ -77,7 +78,8 @@ class ImagesList extends React.Component {
 function mapStateToProps(state) {
     return {
         imagesList: state.imagesList,
-        pageNumber: state.pageNumber
+        pageNumber: state.pageNumber,
+        size: state.size
     }
 }
 

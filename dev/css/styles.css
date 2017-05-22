@@ -42,6 +42,19 @@ div#homeButtonDiv {
 button.mainButton {
     border-radius: 2px;
 }
+
+div#sizeDiv {
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+button#size_BIG {
+    margin-left: 3px;
+}
+button.buttonClicked {
+    color: red;
+}
+
 /* --------- GALLERY ------ */
 
 div#imagesList {
@@ -55,15 +68,18 @@ div#galleryHead {
     text-align: center;
 }
 img.imgThumb {
-    /*
-    width: 160px;
-    height: 160px;
-    */
-    width: 90px;
-    height: 90px;
     margin: 10px 5px 0px 5px;
     border: solid darkslategray 2px;
     cursor: pointer;
+}
+
+img.imgThumb_small {
+    width: 90px;
+    height: 90px;
+}
+img.imgThumb_BIG {
+    width: 160px;
+    height: 160px;
 }
 
 div#pageNumber {

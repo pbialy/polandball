@@ -8,8 +8,9 @@ class SingleImg extends React.Component {
 
     prepareImg() {
         const img = this.props.singleImage;
-        //const thumb = img.width > 1024 ? 'h' : ''; // if img is too big then show 1024x1024 version
-        const thumb = img.width > 640 ? 'l' : ''; // if img is too big then show 640x640 version
+        const maxWidth = this.props.size === 'small' ? 640 : 1024;
+        const widthChanger = maxWidth === 640 ? 'l' : 'h';
+        const thumb = img.width > maxWidth ? widthChanger : ''; // if img is too big then show smaller version
         return `http://imgur.com/${img.id}${thumb}.png`
     }
 
@@ -50,7 +51,8 @@ class SingleImg extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        singleImage: state.singleImage
+        singleImage: state.singleImage,
+        size: state.size
     }
 }
 

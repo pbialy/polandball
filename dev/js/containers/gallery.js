@@ -23,10 +23,6 @@ class Gallery extends React.Component {
         const settings = Object.assign({}, {
             async: true,
             crossDomain: true,
-            //url: `https://api.imgur.com/3/gallery/search/time/all/${pageNr}?q=polandball`,
-            //url: `https://api.imgur.com/3/gallery/search/time/all/${pageNr}?q=title: cats AND dogs ext: gif`,
-            //url: `https://api.imgur.com/3/gallery/search/score?q=polandball+isis`,
-            //url: `https://api.imgur.com/3/gallery/search/score?q=polandball+germany`, // WORKS!
             method: 'GET',
             headers: {
                 'authorization': 'Client-ID c15b126ab623153'

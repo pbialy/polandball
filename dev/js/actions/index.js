@@ -47,6 +47,13 @@ const setComments = (comments) => {
     }
 };
 
+const setSize = (size) => {
+    return {
+        type: "SET_SIZE",
+        payload: size
+    }
+};
+
 export {
     updateImagesList,
     setPageNumber,
@@ -54,5 +61,6 @@ export {
     changeTempAdditionalQuery,
     resetStore,
     showSingleImg,
-    setComments
+    setComments,
+    setSize
 }
