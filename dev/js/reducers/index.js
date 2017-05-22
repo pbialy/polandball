@@ -21,7 +21,7 @@ const allReducers = combineReducers({
 
 const rootReducer = (state, action) => {
     if (action.type === 'RESET_STORE') {
-        state = undefined
+        state = {size: state.size};
     }
     return allReducers(state, action)
 };
