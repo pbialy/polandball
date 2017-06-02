@@ -1,25 +1,25 @@
-const updateImagesList = (imagesList) => {
+export const updateImagesList = (imagesList) => {
     return {
         type: "GET_IMAGES_LIST",
         payload: imagesList
     }
 };
 
-const setPageNumber = (n) => {
+export const setPageNumber = (n) => {
     return {
         type: "SET_PAGE_NUMBER",
         payload: n
     }
 };
 
-const runAdditionalQuery = (query) => {
+export const runAdditionalQuery = (query) => {
     return {
         type: "RUN_ADDITIONAL_QUERY",
         payload: query
     }
 };
 
-const changeTempAdditionalQuery = (query) => {
+export const changeTempAdditionalQuery = (query) => {
     // changes the temporary additional query string (the one displayed in input)
     return {
         type: "CHANGE_TEMP_ADDITIONAL_QUERY",
@@ -27,40 +27,29 @@ const changeTempAdditionalQuery = (query) => {
     }
 };
 
-const resetStore = () => {
+export const resetStore = () => {
     return {
         type: "RESET_STORE"
     }
 };
 
-const showSingleImg = (image) => {
+export const showSingleImg = (image) => {
     return {
         type: "SHOW_SINGLE_IMAGE",
         payload: image
     }
 };
 
-const setComments = (comments) => {
+export const setComments = (comments) => {
     return {
         type: "SET_COMMENTS",
         payload: comments
     }
 };
 
-const setSize = (size) => {
+export const setSize = (size) => {
     return {
         type: "SET_SIZE",
         payload: size
     }
 };
-
-export {
-    updateImagesList,
-    setPageNumber,
-    runAdditionalQuery,
-    changeTempAdditionalQuery,
-    resetStore,
-    showSingleImg,
-    setComments,
-    setSize
-}

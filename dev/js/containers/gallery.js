@@ -56,7 +56,7 @@ class Gallery extends React.Component {
 
     render () {
         return (
-            <div id={'gallery'}>
+            <div id='gallery'>
                 <GalleryHead />
                 <ImagesList />
             </div>

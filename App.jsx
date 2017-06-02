@@ -7,10 +7,10 @@ import Size from '~/js/containers/commons/size.js';
 class App extends React.Component {
     render() {
         return (
-            <div id={"mainDiv"}>
-                <div id={'mainContentDiv'}>
-                    <div id={'pageHeader'}>
-                        <span id={'titlePart1'}>POLANDBALL</span> <span id={'titlePart2'}>GALLERY</span>
+            <div id='mainDiv'>
+                <div id='mainContentDiv'>
+                    <div id='pageHeader'>
+                        <span id='titlePart1'>POLANDBALL</span> <span id='titlePart2'>GALLERY</span>
                     </div>
                     <Size />
                     {this.props.displayMode === 'gallery' && (<Gallery />)}

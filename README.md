@@ -7,6 +7,9 @@ With the help of Imgur's API You can:
 
 This App can be easily changed to work not as 'Polandball' gallery, but as 'anything-you-want' gallery.
 
+Example gallery view:
+![Example gallery view](https://cloud.githubusercontent.com/assets/4898901/26730325/d0ea2bd8-47b0-11e7-9e6f-881cf95785c8.jpg "Example gallery view")
+
 -------
 
 To run this You need npm.

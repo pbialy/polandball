@@ -29,16 +29,16 @@ class GalleryHead extends React.Component {
 
     render() {
         return (
-            <div id={'galleryHead'}>
+            <div id='galleryHead'>
                 <HomeButton />
             {!this.props.additionalQuery && (
                 <GalleryPagePaging />
             )}
-                <div id={'gallerySearchDiv'}>
-                    <input id={'additionalQueryInput'} value={this.props.tempAdditionalQuery} onChange={
+                <div id='gallerySearchDiv'>
+                    <input id='additionalQueryInput' value={this.props.tempAdditionalQuery} onChange={
                         (e) => {this.changeTempAdditionalQuery(e)}
-                    }/> {/* TODO if enter hit then click button below */}
-                    <button id={'additionalQueryButton'} className={'mainButton'} onClick={() => {this.runAdditionalQuery()}}>SEARCH</button>
+                    }/>
+                    <button id='additionalQueryButton' className={'mainButton'} onClick={() => {this.runAdditionalQuery()}}>SEARCH</button>
                 </div>
             </div>
         )

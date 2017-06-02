@@ -66,7 +66,7 @@ class ImagesList extends React.Component {
 
     render() {
         return (
-            <div id={'imagesList'}>
+            <div id='imagesList'>
                 {this.createImagesList()}
             </div>
         )

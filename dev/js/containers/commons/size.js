@@ -13,9 +13,9 @@ class Size extends React.Component {
         const classesForSmall = this.props.size === 'small' ? 'mainButton buttonClicked' : 'mainButton';
         const classesForBig = this.props.size === 'BIG' ? 'mainButton buttonClicked' : 'mainButton';
         return (
-            <div id={'sizeDiv'}>
-                <button id={'size_small'} className={`${classesForSmall}`} onClick={(e) => {this.triggerButton(e, 'small')}}>{'small'}</button>
-                <button id={'size_BIG'} className={`${classesForBig}`}  onClick={(e) => {this.triggerButton(e, 'BIG')}}>{'BIG'}</button>
+            <div id='sizeDiv'>
+                <button id='size_small' className={`${classesForSmall}`} onClick={(e) => {this.triggerButton(e, 'small')}}>{'small'}</button>
+                <button id='size_BIG' className={`${classesForBig}`}  onClick={(e) => {this.triggerButton(e, 'BIG')}}>{'BIG'}</button>
             </div>
         )
     }

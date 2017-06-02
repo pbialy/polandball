@@ -23,7 +23,7 @@ class Comments extends React.Component {
 
     render() {
         return (
-            <div id={'commentsDiv'}>
+            <div id='commentsDiv'>
             {this.props.comments.map((comm, id) => (
                 this.displayComment(comm, id, 1)
             ))}

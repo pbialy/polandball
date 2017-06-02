@@ -13,7 +13,7 @@ class HomeButton extends React.Component {
 
     render() {
         return (
-            <div id={'homeButtonDiv'}>
+            <div id='homeButtonDiv'>
                 <button className={'mainButton'} onClick={() => {this.triggerButton()}}>{'HOME'}</button>
             </div>
         )

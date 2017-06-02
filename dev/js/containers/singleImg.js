@@ -36,7 +36,7 @@ class SingleImg extends React.Component {
         const img = this.props.singleImage;
 
         return (
-            <div id={'singleImg'}>
+            <div id='singleImg'>
                 <HomeButton />
                 {img.title && (<p>Title: {img.title}</p>)}
                 {img.account_url && (<p>Author: {img.account_url}</p>)}

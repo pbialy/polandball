@@ -12,15 +12,15 @@ class GalleryPagePaging extends React.Component {
 
     render() {
         return (
-            <div id={'galleryPagePaging'}>
+            <div id='galleryPagePaging'>
             {(this.props.pageNumber >= 2) ? (
-                <button id={'pageBack'} className={'mainButton'} onClick={() => {this.changePageNumber(-1)}}>{'<'}</button>
+                <button id='pageBack' className={'mainButton'} onClick={() => {this.changePageNumber(-1)}}>{'<'}</button>
             ) : (
                 <PagingButtonPlaceholder />
             )}
-                <div id={'pageNumber'}>{this.props.pageNumber}</div>
+                <div id='pageNumber'>{this.props.pageNumber}</div>
             {(this.props.imagesList && this.props.imagesList.length !== 0) ? (
-                <button id={'pageBack'} className={'mainButton'} onClick={() => {this.changePageNumber(1)}}>{'>'}</button>
+                <button id='pageBack' className={'mainButton'} onClick={() => {this.changePageNumber(1)}}>{'>'}</button>
             ) : (
                 <PagingButtonPlaceholder />
             )}
