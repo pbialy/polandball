@@ -7,6 +7,8 @@ With the help of Imgur's API You can:
 
 This App can be easily changed to work not as 'Polandball' gallery, but as 'anything-you-want' gallery.
 
+Technologies used: React, Redux.
+
 Below You can see examples of how it looks like:
 
 Gallery view
